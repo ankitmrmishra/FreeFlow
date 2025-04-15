@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌊 FreeFlow
 
-## Getting Started
+**FreeFlow** is an all-in-one platform built for freelancers to **showcase their work, manage clients, track time, and get paid**—all from one clean, beautiful dashboard.
 
-First, run the development server:
+Built with creators in mind, FreeFlow helps simplify the chaos of client work with thoughtful UI, smart tools, and smooth workflows.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🎨 **Portfolio Builder** – Display your best work effortlessly
+- 🧠 **Client Management** – Track meetings and projects
+- ⏱️ **Time Tracking** – Stay on top of billable hours
+- 💸 **Invoices** – Send and track payments in one place
+- 📊 **Dashboard** – Insights into your work, earnings, and hours
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Layer       | Tech                                                          |
+| ----------- | ------------------------------------------------------------- |
+| Framework   | [Next.js 15](https://nextjs.org/)                             |
+| Styling     | [Tailwind CSS 4](https://tailwindcss.com/) + `tw-animate-css` |
+| Animations  | [Motion One](https://motion.dev/)                             |
+| Icons       | [Lucide React](https://lucide.dev/)                           |
+| Utilities   | `clsx`, `tailwind-merge`, `class-variance-authority`          |
+| Type System | TypeScript                                                    |
+| Linting     | ESLint (with Next.js config)                                  |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Getting Started
 
-## Deploy on Vercel
+1. **Clone the repo**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/ankitmrmishra/FreeFlow.git
+   cd freeflow
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [`http://localhost:3000`](http://localhost:3000) in your browser.
+
+---
+
+## 📂 Scripts
+
+| Script          | Description             |
+| --------------- | ----------------------- |
+| `npm run dev`   | Start dev server        |
+| `npm run build` | Build for production    |
+| `npm run start` | Start production server |
+| `npm run lint`  | Run ESLint checks       |
+
+---
+
+## 📸 Sneak Peek
+
+![FreeFlow UI Preview](./public/preview.png)
+
+---
+
+## 🤝 Contributing
+
+Coming soon: We’ll open up issues and contribution guidelines once we hit v1.0. Feel free to star or fork in the meantime!
+
+---
+
+## 📃 License
+
+MIT © Ankit Mishra
+
+---
+
+## 🙌 Acknowledgements
+
+Made with love for freelancers and creators who deserve better tools.
