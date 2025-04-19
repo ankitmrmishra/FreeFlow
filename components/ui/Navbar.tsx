@@ -5,6 +5,7 @@ import { Flower, SidebarClose, SidebarOpen } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./button";
 import { AnimatePresence, motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
 const NavItems_Not_loggedin = [
   { name: "Features", link: "/feat" },
@@ -13,6 +14,7 @@ const NavItems_Not_loggedin = [
 ];
 
 const Navbar = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const handlonClickSidebar = () => {
@@ -39,8 +41,19 @@ const Navbar = () => {
           ))}
         </div>
         <div className="hidden sm:flex justify-center align-middle items-center gap-4">
-          <Button className="bg-high  text-lg">SignIn</Button>
-          <Button className="text-lg">SignUp</Button>
+          <Button
+            className="bg-high  text-lg  my-4 "
+            onClick={() => router.push("/login")}
+          >
+            SignIn
+          </Button>
+
+          <Button
+            className="text-lg  my-4 "
+            onClick={() => router.push("/signup")}
+          >
+            SignUp
+          </Button>
         </div>
 
         {/* Mobile desing  */}
@@ -82,8 +95,19 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="flex justify-start gap-5 p-5">
-                <Button className="bg-high  text-lg  my-4 ">SignIn</Button>
-                <Button className="text-lg  my-4 ">SignUp</Button>
+                <Button
+                  className="bg-high  text-lg  my-4 "
+                  onClick={() => router.push("/login")}
+                >
+                  SignIn
+                </Button>
+
+                <Button
+                  className="text-lg  my-4 "
+                  onClick={() => router.push("/signup")}
+                >
+                  SignUp
+                </Button>
               </div>
             </motion.div>
           )}

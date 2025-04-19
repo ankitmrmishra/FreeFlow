@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import MaxWidthWrapper from "../Shared/maxWidthWrapper";
 import { Inter } from "next/font/google";
@@ -17,10 +18,12 @@ import {
   LinkedinIcon,
   LucideTwitter,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const InterFont = Inter({ weight: "600", subsets: ["latin"] });
 
 export const Hero = () => {
+  const router = useRouter();
   return (
     <div>
       <MaxWidthWrapper className="flex flex-col lg:grid lg:grid-cols-2 md:grid-cols-1 md:grid min-h-screen gap-8 py-12">
@@ -39,12 +42,22 @@ export const Hero = () => {
           </p>
 
           <div className="CTA flex flex-col sm:flex-row gap-3 justify-start mt-4">
-            <Button variant={"default"} className="bg-high w-full sm:w-auto">
+            <Button
+              variant={"default"}
+              className="bg-high w-full sm:w-auto"
+              onClick={() => router.push("/signup")}
+            >
               Get started for free
             </Button>
-            <Button variant={"secondary"} className="w-full sm:w-auto">
+
+            {/* Will add the demo soon */}
+
+            {/* <Button
+              variant={"secondary"}
+              className="w-full sm:w-auto hover:cursor-not-allowed"
+            >
               See A Demo
-            </Button>
+            </Button> */}
           </div>
         </div>
         <div className="display perspective-distant drop-shadow-xs drop-shadow-black order-1 lg:order-2">

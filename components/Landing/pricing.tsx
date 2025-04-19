@@ -55,7 +55,7 @@ export default function PricingTeaser() {
             </CardContent>
             <CardFooter className="">
               <Button asChild className="w-full bg-white hover:bg-green-600">
-                <Link href="/auth/signup">Sign Up Now</Link>
+                <Link href="/signup">Sign Up Now</Link>
               </Button>
             </CardFooter>
           </Card>
@@ -104,7 +104,7 @@ export default function PricingTeaser() {
                 asChild
                 className="w-full bg-blue-500 hover:bg-purple-600"
               >
-                <Link href="/auth/signup">Sign Up Now</Link>
+                <Link href="/signup">Sign Up Now</Link>
               </Button>
             </CardFooter>
           </Card>
