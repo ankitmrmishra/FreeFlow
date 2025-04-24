@@ -19,7 +19,7 @@ export default function SignupForm() {
       <div className="w-full max-w-md mx-auto p-6 space-y-6 bg-black/40 backdrop-blur-sm rounded-xl border border-purple-500/20">
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-bold tracking-tight text-white">
-            Create an account
+            Join FreeFlow
           </h1>
           <p className="text-sm text-zinc-400">
             Enter your information to get started
@@ -33,7 +33,7 @@ export default function SignupForm() {
               </Label>
               <Input
                 id="first-name"
-                placeholder="John"
+                placeholder="Ankit"
                 className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
               />
             </div>
@@ -43,10 +43,21 @@ export default function SignupForm() {
               </Label>
               <Input
                 id="last-name"
-                placeholder="Doe"
+                placeholder="Mishra"
                 className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
               />
             </div>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="username" className="text-zinc-300">
+              Username
+            </Label>
+            <Input
+              id="username"
+              placeholder="ankitmishra08"
+              type="text"
+              className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email" className="text-zinc-300">
@@ -121,30 +132,7 @@ export default function SignupForm() {
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <Separator className="w-full border-zinc-800" />
-          </div>
-          <div className="relative flex justify-center text-xs">
-            <span className="bg-black px-2 text-zinc-500">
-              or continue with
-            </span>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <Button
-            variant="outline"
-            className="bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800 hover:text-white"
-          >
-            Google
-          </Button>
-          <Button
-            variant="outline"
-            className="bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800 hover:text-white"
-          >
-            GitHub
-          </Button>
-        </div>
+
         <div className="text-center text-sm text-zinc-400">
           Already have an account?{" "}
           <Link href="/login" className="text-purple-400 hover:text-purple-300">
