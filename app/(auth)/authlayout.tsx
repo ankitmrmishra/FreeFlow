@@ -68,7 +68,7 @@ export default function AuthLayout({
 
         {/* Right side - Auth Form */}
         <div className="w-full lg:w-1/2 bg-zinc-950 flex items-center justify-center h-screen p-6 md:p-10 lg:p-16">
-          <div className="w-full max-w-md">{children}</div>
+          <div className="w-full">{children}</div>
         </div>
       </div>
     </div>

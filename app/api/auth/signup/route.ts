@@ -6,6 +6,13 @@ import {
   removeAllSpaces,
 } from "@/db/helper/helper";
 import prisma from "@/db/prisma";
+import { Resend } from "resend";
+import { VerificationEmailTemplate } from "@/lib/verifyemail/email-template";
+import jwt from "jsonwebtoken";
+import { sendVerificationEmail } from "@/lib/verifyemail/sendemail";
+
+const secret = process.env.JWT_SECRET!;
+const resend = new Resend(process.env.RESEND_API);
 
 /**
  * @description this is a route for signing up
@@ -55,6 +62,13 @@ export async function POST(req: NextRequest) {
     const email_cleaned = removeAllSpaces(email.toLowerCase());
     const username_cleaned = removeAllSpaces(userName.toLowerCase());
 
+    // this is here we will be adding in the generating the verification token
+
+    const verificationToken = jwt.sign({ userName: userName }, secret, {
+      expiresIn: "1h",
+    });
+    const verifyTokenExpiry = new Date(Date.now() + 1000 * 60 * 15);
+
     const user = await prisma.user.create({
       data: {
         firstName,
@@ -62,7 +76,18 @@ export async function POST(req: NextRequest) {
         email: email_cleaned,
         password: hashedpassowrd,
         userName: username_cleaned,
+        verificationToken: verificationToken,
+        verificationTime: verifyTokenExpiry,
       },
+    });
+    /**
+     * here we will now write the logic for sending the email for verification purpose
+     */
+
+    await sendVerificationEmail({
+      firstName: firstName,
+      email: email,
+      verifyTokengen: verificationToken,
     });
     return NextResponse.json({ user }, { status: 200 });
   } catch (error) {

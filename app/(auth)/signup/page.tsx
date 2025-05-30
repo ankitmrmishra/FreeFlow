@@ -10,10 +10,38 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import AuthLayout from "../authlayout";
+import { toast } from "sonner";
 
 export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    userName: "",
+    password: "",
+  });
+  const handleSignuproute = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
 
+    const response = await fetch("/api/auth/signup", {
+      method: "POST",
+      body: JSON.stringify(form),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      toast.error("Error loggin in");
+      setLoading(false);
+    }
+    if (response.ok) {
+      toast.success("Hurray 🎉 Signed Up, Please verify Your Email to log in");
+      setLoading(false);
+    }
+  };
   return (
     <AuthLayout>
       <div className="w-full max-w-md mx-auto p-6 space-y-6 bg-black/40 backdrop-blur-sm rounded-xl border border-purple-500/20">
@@ -32,8 +60,12 @@ export default function SignupForm() {
                 First name
               </Label>
               <Input
+                value={form.firstName}
                 id="first-name"
                 placeholder="Ankit"
+                onChange={(e) =>
+                  setForm({ ...form, firstName: e.target.value })
+                }
                 className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
               />
             </div>
@@ -42,8 +74,10 @@ export default function SignupForm() {
                 Last name
               </Label>
               <Input
+                value={form.lastName}
                 id="last-name"
                 placeholder="Mishra"
+                onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                 className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
               />
             </div>
@@ -53,9 +87,11 @@ export default function SignupForm() {
               Username
             </Label>
             <Input
+              value={form.userName}
               id="username"
               placeholder="ankitmishra08"
               type="text"
+              onChange={(e) => setForm({ ...form, userName: e.target.value })}
               className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
             />
           </div>
@@ -64,7 +100,9 @@ export default function SignupForm() {
               Email
             </Label>
             <Input
+              value={form.email}
               id="email"
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="name@example.com"
               type="email"
               className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
@@ -76,6 +114,8 @@ export default function SignupForm() {
             </Label>
             <div className="relative">
               <Input
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
@@ -127,8 +167,12 @@ export default function SignupForm() {
               </Link>
             </label>
           </div>
-          <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
-            Create Account
+          <Button
+            onClick={handleSignuproute}
+            className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+          >
+            {loading ? "Signing Up, please Wait" : " Create Account"}
+
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
