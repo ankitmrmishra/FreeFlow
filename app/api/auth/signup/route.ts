@@ -6,13 +6,11 @@ import {
   removeAllSpaces,
 } from "@/db/helper/helper";
 import prisma from "@/db/prisma";
-import { Resend } from "resend";
-import { VerificationEmailTemplate } from "@/lib/verifyemail/email-template";
+
 import jwt from "jsonwebtoken";
 import { sendVerificationEmail } from "@/lib/verifyemail/sendemail";
 
 const secret = process.env.JWT_SECRET!;
-const resend = new Resend(process.env.RESEND_API);
 
 /**
  * @description this is a route for signing up

@@ -72,9 +72,9 @@ export const VerificationEmailTemplate: React.FC<
           color: "#4b5563",
         }}
       >
-        Thanks for signing up! You're just one step away from accessing your
-        all-in-one freelancer platform where you can showcase your work, manage
-        clients, and get paid—all in one place.
+        Thanks for signing up! You&apos;re just one step away from accessing
+        your all-in-one freelancer platform where you can showcase your work,
+        manage clients, and get paid—all in one place.
       </p>
 
       <p
@@ -135,7 +135,7 @@ export const VerificationEmailTemplate: React.FC<
             marginBottom: "10px",
           }}
         >
-          If the button doesn't work, copy and paste this link into your
+          If the button doesn&apos;t work, copy and paste this link into your
           browser:
         </p>
         <p
@@ -150,7 +150,7 @@ export const VerificationEmailTemplate: React.FC<
         </p>
       </div>
 
-      {/* What's Next */}
+      {/* What&apos;s Next */}
       <div style={{ marginBottom: "30px" }}>
         <h3
           style={{
@@ -160,7 +160,7 @@ export const VerificationEmailTemplate: React.FC<
             color: "#1f2937",
           }}
         >
-          What's next?
+          What&apos;s next?
         </h3>
         <ul
           style={{
@@ -186,8 +186,8 @@ export const VerificationEmailTemplate: React.FC<
           color: "#4b5563",
         }}
       >
-        If you didn't create an account with FreeFlow, you can safely ignore
-        this email.
+        If you didn&apos;t create an account with FreeFlow, you can safely
+        ignore this email.
       </p>
     </div>
 

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Separator } from "@/components/ui/separator";
+
 import AuthLayout from "../authlayout";
 import { toast } from "sonner";
 
@@ -31,8 +31,7 @@ export default function SignupForm() {
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },
     });
-
-    const data = await response.json();
+    await response.json();
     if (!response.ok) {
       toast.error("Error loggin in");
       setLoading(false);
