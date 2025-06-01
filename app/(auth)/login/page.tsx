@@ -10,9 +10,37 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import AuthLayout from "../authlayout";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formdata, setformData] = useState({
+    username_OR_Email: "",
+    password: "",
+  });
+
+  const handleSignuproute = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const response = await fetch("/api/auth/signin", {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+    await response.json();
+    if (!response.ok) {
+      toast.error("Error loggin in");
+      setLoading(false);
+    }
+    if (response.ok) {
+      toast.success("Hurray 🎉 Signed In Successfully");
+      setLoading(false);
+      redirect("/dashboard");
+    }
+  };
 
   return (
     <AuthLayout>
@@ -31,8 +59,12 @@ export default function LoginForm() {
               Email
             </Label>
             <Input
+              onChange={(e) =>
+                setformData({ ...formdata, username_OR_Email: e.target.value })
+              }
+              value={formdata.username_OR_Email}
               id="email"
-              placeholder="name@example.com"
+              placeholder="email or username"
               type="email"
               className="bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-purple-500"
             />
@@ -51,6 +83,10 @@ export default function LoginForm() {
             </div>
             <div className="relative">
               <Input
+                onChange={(e) =>
+                  setformData({ ...formdata, password: e.target.value })
+                }
+                value={formdata.password}
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
@@ -86,10 +122,23 @@ export default function LoginForm() {
               Remember me
             </label>
           </div>
-          <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
-            Sign In
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          {loading ? (
+            <Button
+              disabled
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+            >
+              Sign In please wait
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          ) : (
+            <Button
+              onClick={handleSignuproute}
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+            >
+              Sign In
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          )}
         </div>
         <div className="relative">
           <div className="absolute inset-0 flex items-center">

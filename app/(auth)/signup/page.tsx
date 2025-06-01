@@ -33,7 +33,7 @@ export default function SignupForm() {
     });
     await response.json();
     if (!response.ok) {
-      toast.error("Error loggin in");
+      toast.error("Error Signin up");
       setLoading(false);
     }
     if (response.ok) {
@@ -166,14 +166,23 @@ export default function SignupForm() {
               </Link>
             </label>
           </div>
-          <Button
-            onClick={handleSignuproute}
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-          >
-            {loading ? "Signing Up, please Wait" : " Create Account"}
-
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          {loading ? (
+            <Button
+              disabled
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+            >
+              Creating Account please wait
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          ) : (
+            <Button
+              onClick={handleSignuproute}
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+            >
+              Sign Up
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          )}
         </div>
 
         <div className="text-center text-sm text-zinc-400">
