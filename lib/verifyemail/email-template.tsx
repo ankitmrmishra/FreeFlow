@@ -14,21 +14,21 @@ export const VerificationEmailTemplate: React.FC<
       fontFamily: "Arial, sans-serif",
       maxWidth: "600px",
       margin: "0 auto",
-      backgroundColor: "#ffffff",
-      color: "#333333",
+      backgroundColor: "#0f172a", // Dark background
+      color: "#e2e8f0", // Light text
     }}
   >
     {/* Header */}
     <div
       style={{
-        backgroundColor: "#2563eb",
+        backgroundColor: "oklch(77.4 0.26 295.7)", // Accent color
         padding: "40px 20px",
         textAlign: "center" as const,
       }}
     >
       <h1
         style={{
-          color: "#ffffff",
+          color: "#0f172a",
           fontSize: "28px",
           fontWeight: "bold",
           margin: "0 0 10px 0",
@@ -38,7 +38,7 @@ export const VerificationEmailTemplate: React.FC<
       </h1>
       <p
         style={{
-          color: "#e0e7ff",
+          color: "#1e293b",
           fontSize: "16px",
           margin: "0",
         }}
@@ -58,7 +58,7 @@ export const VerificationEmailTemplate: React.FC<
           fontSize: "24px",
           fontWeight: "bold",
           marginBottom: "20px",
-          color: "#1f2937",
+          color: "#f1f5f9",
         }}
       >
         Welcome to FreeFlow, {firstName}! 👋
@@ -69,7 +69,7 @@ export const VerificationEmailTemplate: React.FC<
           fontSize: "16px",
           lineHeight: "1.6",
           marginBottom: "20px",
-          color: "#4b5563",
+          color: "#cbd5e1",
         }}
       >
         Thanks for signing up! You&apos;re just one step away from accessing
@@ -82,7 +82,7 @@ export const VerificationEmailTemplate: React.FC<
           fontSize: "16px",
           lineHeight: "1.6",
           marginBottom: "30px",
-          color: "#4b5563",
+          color: "#cbd5e1",
         }}
       >
         Please verify your email address by clicking the button below:
@@ -91,11 +91,11 @@ export const VerificationEmailTemplate: React.FC<
       {/* Verification Button */}
       <div style={{ textAlign: "center" as const, marginBottom: "30px" }}>
         <a
-          href={`https://kalanamak.vercel.app/api/user/verify?token=${verificationToken}&email=${email}`}
+          href={`https://freeflowapp.vercel.app/api/auth/verifyemail?token=${verificationToken}&email=${email}`}
           style={{
             display: "inline-block",
-            backgroundColor: "#2563eb",
-            color: "#ffffff",
+            backgroundColor: "oklch(77.4 0.26 295.7)",
+            color: "#0f172a",
             padding: "15px 30px",
             textDecoration: "none",
             borderRadius: "8px",
@@ -111,7 +111,7 @@ export const VerificationEmailTemplate: React.FC<
       <p
         style={{
           fontSize: "14px",
-          color: "#6b7280",
+          color: "#94a3b8",
           marginBottom: "20px",
           textAlign: "center" as const,
         }}
@@ -122,7 +122,7 @@ export const VerificationEmailTemplate: React.FC<
       {/* Alternative Link */}
       <div
         style={{
-          backgroundColor: "#f9fafb",
+          backgroundColor: "#1e293b",
           padding: "20px",
           borderRadius: "8px",
           marginBottom: "30px",
@@ -131,7 +131,7 @@ export const VerificationEmailTemplate: React.FC<
         <p
           style={{
             fontSize: "14px",
-            color: "#4b5563",
+            color: "#cbd5e1",
             marginBottom: "10px",
           }}
         >
@@ -141,12 +141,12 @@ export const VerificationEmailTemplate: React.FC<
         <p
           style={{
             fontSize: "14px",
-            color: "#2563eb",
+            color: "oklch(77.4 0.26 295.7)",
             wordBreak: "break-all" as const,
             margin: "0",
           }}
         >
-          {`https://kalanamak.vercel.app/api/user/verify?token=${verificationToken}&email=${email}`}
+          {`https://freeflowapp.vercel.app/api/auth/verifyemail?token=${verificationToken}&email=${email}`}
         </p>
       </div>
 
@@ -157,7 +157,7 @@ export const VerificationEmailTemplate: React.FC<
             fontSize: "18px",
             fontWeight: "bold",
             marginBottom: "15px",
-            color: "#1f2937",
+            color: "#f1f5f9",
           }}
         >
           What&apos;s next?
@@ -165,7 +165,7 @@ export const VerificationEmailTemplate: React.FC<
         <ul
           style={{
             paddingLeft: "20px",
-            color: "#4b5563",
+            color: "#cbd5e1",
           }}
         >
           <li style={{ marginBottom: "8px" }}>
@@ -183,7 +183,7 @@ export const VerificationEmailTemplate: React.FC<
         style={{
           fontSize: "16px",
           lineHeight: "1.6",
-          color: "#4b5563",
+          color: "#cbd5e1",
         }}
       >
         If you didn&apos;t create an account with FreeFlow, you can safely
@@ -194,28 +194,31 @@ export const VerificationEmailTemplate: React.FC<
     {/* Footer */}
     <div
       style={{
-        backgroundColor: "#f8fafc",
+        backgroundColor: "#1e293b",
         padding: "30px 20px",
         textAlign: "center" as const,
-        borderTop: "1px solid #e5e7eb",
+        borderTop: "1px solid #334155",
       }}
     >
       <p
         style={{
           fontSize: "14px",
-          color: "#6b7280",
+          color: "#94a3b8",
           marginBottom: "10px",
         }}
       >
         Need help? Contact us at{" "}
-        <a href="mailto:support@freeflow.com" style={{ color: "#2563eb" }}>
+        <a
+          href="mailto:support@freeflow.com"
+          style={{ color: "oklch(77.4 0.26 295.7)" }}
+        >
           support@freeflow.com
         </a>
       </p>
       <p
         style={{
           fontSize: "12px",
-          color: "#9ca3af",
+          color: "#64748b",
           margin: "0",
         }}
       >
