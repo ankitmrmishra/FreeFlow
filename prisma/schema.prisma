@@ -18,8 +18,8 @@ model User {
   updatedAt         DateTime  @default(now())
   isemailverifed    Boolean   @default(false)
   // here we will write the verifying the 
-  verificationToken String
-  verificationTime  DateTime
+  verificationToken String?
+  verificationTime  DateTime?
   sessions          Session[]
 }
 
