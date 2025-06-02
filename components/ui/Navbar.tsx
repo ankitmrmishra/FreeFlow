@@ -42,14 +42,14 @@ const Navbar = () => {
         </div>
         <div className="hidden sm:flex justify-center align-middle items-center gap-4">
           <Button
-            className="bg-high  text-lg  my-4 "
+            className="bg-high  text-lg  my-4 hover:cursor-pointer"
             onClick={() => router.push("/login")}
           >
             SignIn
           </Button>
 
           <Button
-            className="text-lg  my-4 "
+            className="text-lg  my-4 hover:cursor-pointer "
             onClick={() => router.push("/signup")}
           >
             SignUp
