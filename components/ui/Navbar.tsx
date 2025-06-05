@@ -1,11 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MaxWidthWrapper from "../Shared/maxWidthWrapper";
 import { Flower, SidebarClose, SidebarOpen } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./button";
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const NavItems_Not_loggedin = [
   { name: "Features", link: "/feat" },
@@ -14,8 +16,27 @@ const NavItems_Not_loggedin = [
 ];
 
 const Navbar = () => {
+  const { data: session } = useSession();
+
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [userdata, setuserdata] = useState(false);
+  let profilesrc = "";
+  let profilealt = "";
+
+  useEffect(() => {
+    if (session?.user) {
+      setuserdata(true);
+      if (session.user.image) {
+        profilesrc = session.user.image;
+      }
+      if (session.user.email) {
+        profilealt = session.user.email;
+      }
+
+      console.log(session.user);
+    }
+  }, [session]);
 
   const handlonClickSidebar = () => {
     setOpen(!open);
@@ -40,21 +61,34 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <div className="hidden sm:flex justify-center align-middle items-center gap-4">
-          <Button
-            className="bg-high  text-lg  my-4 hover:cursor-pointer"
-            onClick={() => router.push("/login")}
-          >
-            SignIn
-          </Button>
 
-          <Button
-            className="text-lg  my-4 hover:cursor-pointer "
-            onClick={() => router.push("/signup")}
-          >
-            SignUp
-          </Button>
-        </div>
+        {userdata ? (
+          <div className="">
+            <Image
+              src={profilesrc}
+              alt={profilealt}
+              width={800}
+              height={800}
+              className="size-10 rounded-full"
+            />
+          </div>
+        ) : (
+          <div className="hidden sm:flex justify-center align-middle items-center gap-4">
+            <Button
+              className="bg-high  text-lg  my-4 hover:cursor-pointer"
+              onClick={() => router.push("/login")}
+            >
+              SignIn
+            </Button>
+
+            <Button
+              className="text-lg  my-4 hover:cursor-pointer "
+              onClick={() => router.push("/signup")}
+            >
+              SignUp
+            </Button>
+          </div>
+        )}
 
         {/* Mobile desing  */}
 

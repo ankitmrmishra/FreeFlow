@@ -12,8 +12,14 @@ import { Separator } from "@/components/ui/separator";
 import AuthLayout from "../authlayout";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 
 export default function LoginForm() {
+  const { data: session } = useSession();
+  if (session?.user) {
+    redirect("/dashboard");
+  }
+
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formdata, setformData] = useState({
@@ -152,12 +158,14 @@ export default function LoginForm() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <Button
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
             variant="outline"
             className="bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800 hover:text-white"
           >
             Google
           </Button>
           <Button
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             variant="outline"
             className="bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800 hover:text-white"
           >
